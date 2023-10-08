@@ -11,7 +11,7 @@ const Navbar = () => {
     }
     const navOptions = <>
         <li><a>Home</a></li>
-        <li><a>All jewelry</a></li>
+        <li><Link to="/alljewlery">All Jewelry</Link></li>
         <li><a>My jewelry</a></li>
         <li><a>Add jewelry</a></li>
         <li><a>Blog</a></li>
