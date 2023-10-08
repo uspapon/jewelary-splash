@@ -1,11 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProviders';
 import Swal from 'sweetalert2';
 
 const Register = () => {
     const {user, createUser, updateUserProfile} = useContext(AuthContext);
+    const [error, setError] = useState();
     console.log(user)
+
+    
+
     const handleRegister = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -13,7 +17,18 @@ const Register = () => {
         const photo = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(name, email, password);
+        const confirmPassword = form.confPassword.value;
+        console.log(name, email, password, confirmPassword);
+
+        setError('');
+
+        if(password !== confirmPassword){
+            setError('Your password did not match!')
+            return;
+        }else if (password.length < 6){
+            setError('Password must be 6 characters or longer');
+            return;
+        }
         
         createUser(email, password)
         .then(result => {
@@ -26,7 +41,7 @@ const Register = () => {
                     Swal.fire({
                         position: 'top-end',
                         icon: 'success',
-                        title: 'User has been Created Successfully',
+                        title: 'Registration has been done Successfully',
                         showConfirmButton: false,
                         timer: 1500
                     })
@@ -36,6 +51,7 @@ const Register = () => {
         })
         .catch(error => {
             console.log(error);
+            setError(error.message);
         })
     }
     return (
@@ -48,6 +64,7 @@ const Register = () => {
                     </div>
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 px-5">
                         <form onSubmit={handleRegister} className="card-body md:pb-2">
+                        <p className='text-error'>{error}</p>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Name</span>
@@ -56,9 +73,9 @@ const Register = () => {
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Photo</span>
+                                    <span className="label-text">Photo URL</span>
                                 </label>
-                                <input type="text" placeholder="photo" name='photo' id='photo' className="input input-bordered" required />
+                                <input type="text" placeholder="photoURL" name='photo' id='photo' className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
