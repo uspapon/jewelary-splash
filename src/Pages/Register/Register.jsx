@@ -1,14 +1,16 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProviders';
+import Swal from 'sweetalert2';
 
 const Register = () => {
-    const {user, createUser} = useContext(AuthContext);
+    const {user, createUser, updateUserProfile} = useContext(AuthContext);
     console.log(user)
     const handleRegister = (event) => {
         event.preventDefault();
         const form = event.target;
         const name = form.name.value;
+        const photo = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
         console.log(name, email, password);
@@ -17,6 +19,19 @@ const Register = () => {
         .then(result => {
             const newUser  = result.user;
             console.log(newUser );
+
+            if(newUser){
+                updateUserProfile(name, photo)
+                .then(result => {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'User has been Created Successfully',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                })
+            }
             form.reset();
         })
         .catch(error => {
@@ -60,6 +75,13 @@ const Register = () => {
                                 <input type="password" name='password' id='password' placeholder="password" className="input input-bordered" required />
                                
                             </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Confirm Password</span>
+                                </label>
+                                <input type="password" name='confPassword' id='confPassword' placeholder="password" className="input input-bordered" required />
+                               
+                            </div>
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary my-0">Login</button>
                             </div>
@@ -67,7 +89,7 @@ const Register = () => {
                         <Link className='text-center label-text-alt link link-hover' to="/login">
                             Already have an Account ? login here!
                         </Link>
-                        <div className="divider">OR</div>
+                        
                     </div>
                 </div>
             </div>
