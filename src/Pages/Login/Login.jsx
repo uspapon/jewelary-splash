@@ -1,16 +1,19 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProviders';
 import { FaGoogle } from 'react-icons/fa';
+import Swal from 'sweetalert2';
 
 const Login = () => {
     const { signIn, googleSignIn } = useContext(AuthContext);
+    // const [error, setError] = useState();
     const handleLogin = event => {
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
         console.log(email, password);
+        // setError('');
 
         signIn(email, password)
             .then(result => {
@@ -20,6 +23,14 @@ const Login = () => {
             })
             .catch(error => {
                 console.log(error);
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: error.message,
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+
             })
     }
 

@@ -24,9 +24,24 @@ const Register = () => {
 
         if(password !== confirmPassword){
             setError('Your password did not match!')
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: "Your password did not match!",
+                showConfirmButton: false,
+                timer: 1500
+            })
             return;
         }else if (password.length < 6){
             setError('Password must be 6 characters or longer');
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: "Password must be 6 characters or longer",
+                showConfirmButton: false,
+                timer: 1500
+            })
+            
             return;
         }
         
@@ -51,7 +66,13 @@ const Register = () => {
         })
         .catch(error => {
             console.log(error);
-            setError(error.message);
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: error.message,
+                showConfirmButton: false,
+                timer: 1500
+            })
         })
     }
     return (
@@ -100,7 +121,7 @@ const Register = () => {
                                
                             </div>
                             <div className="form-control mt-6">
-                                <button className="btn btn-primary my-0">Login</button>
+                                <button className="btn btn-primary my-0">Register</button>
                             </div>
                         </form>
                         <Link className='text-center label-text-alt link link-hover pb-5' to="/login">

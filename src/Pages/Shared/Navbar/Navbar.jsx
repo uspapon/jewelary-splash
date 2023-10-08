@@ -14,7 +14,7 @@ const Navbar = () => {
         <li><Link to="/alljewlery">All Jewelry</Link></li>
         <li><a>My jewelry</a></li>
         <li><a>Add jewelry</a></li>
-        <li><a>Blog</a></li>
+        <li><Link to="/blog">Blog</Link></li>
     </>
     return (
         <div>

@@ -7,6 +7,7 @@ import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import AllJewelry from "../Pages/AllJewelry/AllJewelry";
+import Blog from "../Pages/Blog/Blog";
 
 
 export const router = createBrowserRouter([
@@ -30,6 +31,10 @@ export const router = createBrowserRouter([
       {
         path: '/alljewlery',
         element: <AllJewelry></AllJewelry>
+      },
+      {
+        path: '/blog',
+        element: <Blog></Blog>
       }
     ],
   },
