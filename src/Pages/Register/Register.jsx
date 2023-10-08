@@ -86,7 +86,7 @@ const Register = () => {
                                 <button className="btn btn-primary my-0">Login</button>
                             </div>
                         </form>
-                        <Link className='text-center label-text-alt link link-hover' to="/login">
+                        <Link className='text-center label-text-alt link link-hover pb-5' to="/login">
                             Already have an Account ? login here!
                         </Link>
                         

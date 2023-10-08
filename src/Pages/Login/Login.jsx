@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProviders';
+import { FaGoogle } from 'react-icons/fa';
 
 const Login = () => {
-    const { signIn } = useContext(AuthContext);
+    const { signIn, googleSignIn } = useContext(AuthContext);
     const handleLogin = event => {
         event.preventDefault();
         const form = event.target;
@@ -12,14 +13,25 @@ const Login = () => {
         console.log(email, password);
 
         signIn(email, password)
-        .then(result => {
-            const loggedUser = result.user;
-            console.log(loggedUser);
-            form.reset();
-        })
-        .catch(error => {
-            console.log(error);
-        })
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                form.reset();
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+
+    const handleGoogleSignIn = () => {
+        googleSignIn()
+            .then(res => {
+                const loggedUser = res.user;
+                console.log(loggedUser);
+                console.log("successful google login");
+            })
+            .catch(error => console.log(error))
+
     }
     return (
         <div className='w-3/4 mx-auto'>
@@ -42,7 +54,7 @@ const Login = () => {
                                     <span className="label-text">Password</span>
                                 </label>
                                 <input type="password" name='password' id='password' placeholder="password" className="input input-bordered" required />
-                                
+
                             </div>
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary my-0">Login</button>
@@ -52,6 +64,12 @@ const Login = () => {
                             New to SPLASH! ? register here!
                         </Link>
                         <div className="divider">OR</div>
+                        <div className="text-center">
+                            <div className='mb-3'>Login with Google here </div>
+                            <button onClick={handleGoogleSignIn} className="btn btn-circle mb-3 btn-outline text-indigo-700 hover:bg-indigo-500 hover:border-none">
+                                <FaGoogle></FaGoogle>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

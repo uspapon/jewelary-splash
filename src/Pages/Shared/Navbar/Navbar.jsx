@@ -3,16 +3,14 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProviders";
 
 const Navbar = () => {
-    const {user} = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
+    const handleLogout = () => {
+        logOut()
+            .then(() => { console.log("successfully logged out") })
+            .catch(error => console.log(error));
+    }
     const navOptions = <>
         <li><a>Home</a></li>
-        {/* <li>
-                                <a>Home</a>
-                                <ul className="p-2">
-                                    <li><a className="text-white">Submenu 1</a></li>
-                                    <li><a>Submenu 2</a></li>
-                                </ul>
-                            </li> */}
         <li><a>All jewelry</a></li>
         <li><a>My jewelry</a></li>
         <li><a>Add jewelry</a></li>
@@ -38,14 +36,24 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                        <div className="w-5 rounded-full">
-                            <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-                            
-                        </div>
-                    </label>
-                    <Link className="text-white" to='/'>Welcome {user}</Link>
-                    <a href="/login" className="btn btn-link text-white">Login</a>
+                    <a data-tooltip-id="my-tooltip" data-tooltip-content={user && user?.displayName}>
+                        {user &&
+                            <img
+                                src={user && user?.photoURL}
+                                alt="Profile"
+                                className="h-10 w-10 rounded-full mr-4"
+                            />}
+                    </a>
+                    {
+                        user ? <>
+                            <button onClick={handleLogout} className="btn btn-xs">Logout</button>
+                        </>
+                            : <>
+                                <a href="/login" className="btn btn-link text-white">Login</a>
+                            </>
+                    }
+
+
                     <a href="/register" className="btn btn-link text-white">Register</a>
                 </div>
             </div>
