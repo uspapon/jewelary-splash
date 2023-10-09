@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import Jewelry from '../Jewelry/Jewelry';
 
 const AllJewelry = () => {
+
+    useEffect(() => {
+        
+    },[])
+
     return (
         <div className='p-10'>
-            <h2>All Jewelry</h2>
+            
+            <div className='grid md:grid-cols-3 gap-5'>
+                <Jewelry></Jewelry>
+
+            </div>
+
         </div>
     );
 };
