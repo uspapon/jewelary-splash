@@ -11,6 +11,28 @@ const AllUsers = () => {
 
     }, [])
 
+    const handleManageRole = (id) => {
+        console.log("user idddddd",id);
+        fetch(`http://localhost:5000/users/admin/${id}`, {
+            method: 'PATCH'
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount) {
+                    
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: `${user.name} has been made admin`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            })
+
+    }
+
 
     return (
         <div>
@@ -35,17 +57,19 @@ const AllUsers = () => {
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
                                 <td>{
-                                    user.role === "admin" ? "admin" 
-                                    : <button className="btn btn-ghost bg-indigo-800 text-white"><FaUserShield></FaUserShield></button>
+                                    user.role === "admin" ? "admin"
+                                        : "user"
 
-                                    }</td>
-                                <th>Details</th>
+                                }</td>
+                                <th>
+                                <button onClick={() => handleManageRole(user._id)} className="btn btn-ghost text-white bg-orange-600 me-4"><FaUserShield></FaUserShield></button>
+                                </th>
                             </tr>)
                         }
-                        
-                        
+
+
                     </tbody>
-                    
+
 
                 </table>
             </div>
