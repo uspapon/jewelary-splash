@@ -3,9 +3,10 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProviders';
 import { FaGoogle } from 'react-icons/fa';
 import Swal from 'sweetalert2';
+import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
 const Login = () => {
-    const { signIn, googleSignIn } = useContext(AuthContext);
+    const { signIn } = useContext(AuthContext);
    
     const navigate = useNavigate();
     const location = useLocation();
@@ -40,18 +41,7 @@ const Login = () => {
             })
     }
 
-    const handleGoogleSignIn = () => {
-        googleSignIn()
-            .then(res => {
-                const loggedUser = res.user;
-                console.log(loggedUser);
-                console.log("successful google login");
-                // navigate 
-                navigate(from, {replace:true});
-            })
-            .catch(error => console.log(error))
 
-    }
     return (
         <div className='w-3/4 mx-auto'>
             <div className="hero min-h-screen">
@@ -82,13 +72,7 @@ const Login = () => {
                         <Link className='text-center label-text-alt link link-hover' to="/register">
                             New to SPLASH! ? register here!
                         </Link>
-                        <div className="divider">OR</div>
-                        <div className="text-center">
-                            <div className='mb-3'>Login with Google here </div>
-                            <button onClick={handleGoogleSignIn} className="btn btn-circle mb-3 btn-outline text-indigo-700 hover:bg-indigo-500 hover:border-none">
-                                <FaGoogle></FaGoogle>
-                            </button>
-                        </div>
+                        <SocialLogin></SocialLogin>
                     </div>
                 </div>
             </div>
