@@ -10,6 +10,7 @@ import AllJewelry from "../Pages/AllJewelry/AllJewelry";
 import Blog from "../Pages/Blog/Blog";
 import PrivetRoute from "./PrivetRoute";
 import MyJewelry from "../Pages/MyJewelry/MyJewelry";
+import AddJewelry from "../Pages/AddJewelry/AddJewelry";
 
 
 export const router = createBrowserRouter([
@@ -37,6 +38,10 @@ export const router = createBrowserRouter([
       {
         path: '/myjewlery',
         element: <PrivetRoute><MyJewelry></MyJewelry></PrivetRoute>
+      },
+      {
+        path: '/addjewlery',
+        element: <PrivetRoute><AddJewelry></AddJewelry></PrivetRoute>
       },
       {
         path: '/blog',
