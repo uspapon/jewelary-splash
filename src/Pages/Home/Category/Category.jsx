@@ -25,19 +25,19 @@ const Category = () => {
             </section>
             <div className='flex'>
                 <div className="card w-96">
-                    <figure><img src={cat1} alt="Shoes" /></figure>
+                    <figure><img src={cat1} alt="Category" /></figure>
 
                 </div>
                 <div className="card w-96 ">
-                    <figure><img src={cat2} alt="Shoes" /></figure>
+                    <figure><img src={cat2} alt="Category" /></figure>
 
                 </div>
                 <div className="card w-96">
-                    <figure><img src={cat4} alt="Shoes" /></figure>
+                    <figure><img src={cat4} alt="Category" /></figure>
 
                 </div>
                 <div className="card w-96 ">
-                    <figure><img src={cat3} alt="Shoes" /></figure>
+                    <figure><img src={cat3} alt="Category" /></figure>
 
                 </div>
             </div>
