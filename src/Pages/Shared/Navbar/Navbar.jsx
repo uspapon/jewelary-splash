@@ -46,7 +46,9 @@ const Navbar = () => {
                     </a>
                     {
                         user ? <>
+                            <Link to="/dashboard/userProfile" className="ps-1 pe-2"> My Profile</Link>
                             <button onClick={handleLogout} className="btn btn-xs">Logout</button>
+                            
                         </>
                             : <>
                                 <a href="/login" className="btn btn-link text-white">Login</a>

@@ -11,6 +11,8 @@ import Blog from "../Pages/Blog/Blog";
 import PrivetRoute from "./PrivetRoute";
 import MyJewelry from "../Pages/MyJewelry/MyJewelry";
 import AddJewelry from "../Pages/AddJewelry/AddJewelry";
+import Dashboard from "../Layout/Dashboard";
+import UserProfile from "../Pages/Dashboard/UserProfile/UserProfile";
 
 
 export const router = createBrowserRouter([
@@ -49,4 +51,14 @@ export const router = createBrowserRouter([
       }
     ],
   },
+  {
+    path: "dashboard",
+    element: <Dashboard></Dashboard>,
+    children: [
+      {
+        path: 'userProfile',
+        element: <UserProfile></UserProfile>
+      }
+    ]
+  }
 ]);

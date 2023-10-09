@@ -1,0 +1,123 @@
+[
+    {
+      "_id": 1,
+      "jewelryName": "Elegant Diamond Necklace",
+      "jewelryImg": "https://i.ibb.co/nBfqk8n/ring5.webp",
+      "jewelryPrice": 1999.99
+    },
+    {
+      "_id": 2,
+      "jewelryName": "Sapphire and Diamond Ring",
+      "jewelryImg": "https://i.ibb.co/crxhgHg/ring4.webp",
+      "jewelryPrice": 899.95
+    },
+    {
+      "_id": 3,
+      "jewelryName": "Gold Hoop Earrings",
+      "jewelryImg": "https://i.ibb.co/k2NK8Cv/ring3.webp",
+      "jewelryPrice": 299.99
+    },
+    {
+      "_id": 4,
+      "jewelryName": "Pearl Drop Necklace",
+      "jewelryImg": "https://i.ibb.co/Lzd5rPj/ring2.jpg",
+      "jewelryPrice": 599.50
+    },
+    {
+      "_id": 5,
+      "jewelryName": "Emerald Bracelet",
+      "jewelryImg": "https://i.ibb.co/0BQPmQm/ring1.png",
+      "jewelryPrice": 1299.75
+    },
+    {
+      "_id": 6,
+      "jewelryName": "Ruby and Diamond Earrings",
+      "jewelryImg": "https://i.ibb.co/qd25s2D/chain5.webp",
+      "jewelryPrice": 799.99
+    },
+    {
+      "_id": 7,
+      "jewelryName": "Silver Heart Pendant",
+      "jewelryImg": "https://i.ibb.co/pJGDf6C/chain4.webp",
+      "jewelryPrice": 49.99
+    },
+    {
+      "_id": 8,
+      "jewelryName": "Platinum Wedding Band",
+      "jewelryImg": "https://i.ibb.co/7jTw9tz/chain3.webp",
+      "jewelryPrice": 1499.99
+    },
+    {
+      "_id": 9,
+      "jewelryName": "Amethyst and Topaz Ring",
+      "jewelryImg": "https://i.ibb.co/6WWKbSj/chain2.webp",
+      "jewelryPrice": 499.95
+    },
+    {
+      "_id": 10,
+      "jewelryName": "Pearl Stud Earrings",
+      "jewelryImg": "https://i.ibb.co/Z2LTKWL/chain1.webp",
+      "jewelryPrice": 149.50
+    },
+    {
+      "_id": 11,
+      "jewelryName": "Diamond Tennis Bracelet",
+      "jewelryImg": "https://i.ibb.co/nBfqk8n/ring5.webp",
+      "jewelryPrice": 2499.99
+    },
+    {
+      "_id": 12,
+      "jewelryName": "Rose Gold Engagement Ring",
+      "jewelryImg": "https://i.ibb.co/crxhgHg/ring4.webp",
+      "jewelryPrice": 1999.95
+    },
+    {
+      "_id": 13,
+      "jewelryName": "Opal Pendant Necklace",
+      "jewelryImg": "https://i.ibb.co/k2NK8Cv/ring3.webp",
+      "jewelryPrice": 399.99
+    },
+    {
+      "_id": 14,
+      "jewelryName": "Citrine and Diamond Ring",
+      "jewelryImg": "https://i.ibb.co/Lzd5rPj/ring2.jpg",
+      "jewelryPrice": 799.50
+    },
+    {
+      "_id": 15,
+      "jewelryName": "White Gold Cross Pendant",
+      "jewelryImg": "https://i.ibb.co/0BQPmQm/ring1.png",
+      "jewelryPrice": 149.99
+    },
+    {
+      "_id": 16,
+      "jewelryName": "Sapphire Tennis Bracelet",
+      "jewelryImg": "https://i.ibb.co/Z2LTKWL/chain1.webp",
+      "jewelryPrice": 1799.99
+    },
+    {
+      "_id": 17,
+      "jewelryName": "Emerald and Diamond Necklace",
+      "jewelryImg": "https://i.ibb.co/qd25s2D/chain5.webp",
+      "jewelryPrice": 1099.95
+    },
+    {
+      "_id": 18,
+      "jewelryName": "Gold Chain Necklace",
+      "jewelryImg": "https://i.ibb.co/pJGDf6C/chain4.webp",
+      "jewelryPrice": 249.99
+    },
+    {
+      "_id": 19,
+      "jewelryName": "Tanzanite Stud Earrings",
+      "jewelryImg": "https://i.ibb.co/7jTw9tz/chain3.webp",
+      "jewelryPrice": 699.50
+    },
+    {
+      "_id": 20,
+      "jewelryName": "Diamond Cluster Ring",
+      "jewelryImg": "https://i.ibb.co/6WWKbSj/chain2.webp",
+      "jewelryPrice": 1499.99
+    }
+  ]
+  
