@@ -1,14 +1,16 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProviders';
 import Swal from 'sweetalert2';
 
 const Register = () => {
-    const {user, createUser, updateUserProfile} = useContext(AuthContext);
+    const { user, createUser, updateUserProfile } = useContext(AuthContext);
     const [error, setError] = useState();
     console.log(user)
 
-    
+    const navigate = useNavigate();
+
+
 
     const handleRegister = (event) => {
         event.preventDefault();
@@ -22,7 +24,7 @@ const Register = () => {
 
         setError('');
 
-        if(password !== confirmPassword){
+        if (password !== confirmPassword) {
             setError('Your password did not match!')
             Swal.fire({
                 position: 'top-end',
@@ -32,7 +34,7 @@ const Register = () => {
                 timer: 1500
             })
             return;
-        }else if (password.length < 6){
+        } else if (password.length < 6) {
             setError('Password must be 6 characters or longer');
             Swal.fire({
                 position: 'top-end',
@@ -41,39 +43,57 @@ const Register = () => {
                 showConfirmButton: false,
                 timer: 1500
             })
-            
+
             return;
         }
-        
-        createUser(email, password)
-        .then(result => {
-            const newUser  = result.user;
-            console.log(newUser );
 
-            if(newUser){
-                updateUserProfile(name, photo)
-                .then(result => {
-                    Swal.fire({
-                        position: 'top-end',
-                        icon: 'success',
-                        title: 'Registration has been done Successfully',
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
-                })
-            }
-            form.reset();
-        })
-        .catch(error => {
-            console.log(error);
-            Swal.fire({
-                position: 'top-end',
-                icon: 'error',
-                title: error.message,
-                showConfirmButton: false,
-                timer: 1500
+        createUser(email, password)
+            .then(result => {
+                const newUser = result.user;
+                console.log(newUser);
+
+                if (newUser) {
+                    updateUserProfile(name, photo)
+                        .then(result => {
+                            const saveUser = { name, email }
+                            fetch('http://localhost:5000/users', {
+                                method: 'POST',
+                                headers: {
+                                    'content-type': 'application/json'
+                                },
+                                body: JSON.stringify(saveUser)
+                            })
+                                .then(res => res.json())
+                                .then(data => {
+                                    console.log(data.insertedId)
+                                    if (data.insertedId) {
+                                        form.reset();
+                                        Swal.fire({
+                                            position: 'top-end',
+                                            icon: 'success',
+                                            title: 'Registration has been done Successfully',
+                                            showConfirmButton: false,
+                                            timer: 1500
+                                        })
+                                        
+                                        navigate('/');
+                                    }
+                                })
+
+                        })
+                }
+
             })
-        })
+            .catch(error => {
+                console.log(error);
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: error.message,
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            })
     }
     return (
         <div className='w-3/4 mx-auto'>
@@ -85,7 +105,7 @@ const Register = () => {
                     </div>
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 px-5">
                         <form onSubmit={handleRegister} className="card-body md:pb-2">
-                        <p className='text-error'>{error}</p>
+                            <p className='text-error'>{error}</p>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Name</span>
@@ -104,21 +124,21 @@ const Register = () => {
                                 </label>
                                 <input type="email" placeholder="email" name='email' id='email' className="input input-bordered" required />
                             </div>
-                            
-                            
+
+
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
                                 <input type="password" name='password' id='password' placeholder="password" className="input input-bordered" required />
-                               
+
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Confirm Password</span>
                                 </label>
                                 <input type="password" name='confPassword' id='confPassword' placeholder="password" className="input input-bordered" required />
-                               
+
                             </div>
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary my-0">Register</button>
@@ -127,7 +147,7 @@ const Register = () => {
                         <Link className='text-center label-text-alt link link-hover pb-5' to="/login">
                             Already have an Account ? login here!
                         </Link>
-                        
+
                     </div>
                 </div>
             </div>
