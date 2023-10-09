@@ -12,8 +12,8 @@ const Navbar = () => {
     const navOptions = <>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/alljewlery">All Jewelry</Link></li>
-        <li><a>My jewelry</a></li>
-        <li><a>Add jewelry</a></li>
+        <li><Link to="/myjewlery">My jewelry</Link></li>
+        <li><Link to="/addjewlery">Add jewelry</Link></li>
         <li><Link to="/blog">Blog</Link></li>
     </>
     return (
