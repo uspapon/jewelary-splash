@@ -13,6 +13,7 @@ import MyJewelry from "../Pages/MyJewelry/MyJewelry";
 import AddJewelry from "../Pages/AddJewelry/AddJewelry";
 import Dashboard from "../Layout/Dashboard";
 import UserProfile from "../Pages/Dashboard/UserProfile/UserProfile";
+import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
 
 
 export const router = createBrowserRouter([
@@ -58,7 +59,11 @@ export const router = createBrowserRouter([
       {
         path: 'userProfile',
         element: <UserProfile></UserProfile>
-      }
+      },
+      {
+        path: 'users',
+        element: <AllUsers></AllUsers>
+      },
     ]
   }
 ]);
