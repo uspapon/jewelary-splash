@@ -4,7 +4,7 @@ import { AuthContext } from '../../providers/AuthProviders';
 import Swal from 'sweetalert2';
 
 const Register = () => {
-    const { user, createUser, updateUserProfile } = useContext(AuthContext);
+    const { user, createUser, updateUserProfile, googleSignIn } = useContext(AuthContext);
     const [error, setError] = useState();
     console.log(user)
 
@@ -75,7 +75,7 @@ const Register = () => {
                                             showConfirmButton: false,
                                             timer: 1500
                                         })
-                                        
+
                                         navigate('/');
                                     }
                                 })
@@ -94,6 +94,42 @@ const Register = () => {
                     timer: 1500
                 })
             })
+    }
+
+    // Google Signup
+    const handleGoogleSignIn = () => {
+        googleSignIn()
+            .then(res => {
+                const loggedUser = res.user;
+                console.log(loggedUser);
+                console.log("successful google login");
+
+                // save user info to database 
+                const saveUser = { name: loggedUser.displayName, email: loggedUser.email }
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(saveUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data.insertedId)
+                        if (data.insertedId) {
+
+
+
+                            // navigate 
+                            navigate(from, { replace: true });
+                        }
+                    })
+
+
+
+            })
+            .catch(error => console.log(error))
+
     }
     return (
         <div className='w-3/4 mx-auto'>
@@ -147,6 +183,13 @@ const Register = () => {
                         <Link className='text-center label-text-alt link link-hover pb-5' to="/login">
                             Already have an Account ? login here!
                         </Link>
+                        <div className="divider">OR</div>
+                        <div className="text-center">
+                            <div className='mb-3'>Login with Google here </div>
+                            <button onClick={handleGoogleSignIn} className="btn btn-circle mb-3 btn-outline text-indigo-700 hover:bg-indigo-500 hover:border-none">
+                                <FaGoogle></FaGoogle>
+                            </button>
+                        </div>
 
                     </div>
                 </div>
